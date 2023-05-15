@@ -1,0 +1,56 @@
+ul.a {
+    list-style-type: square;
+  }
+  ul.a a{
+    text-decoration: none;
+    color: gray;
+  }
+  .texth3{
+    color: #757D81; 
+  }
+  .textp{
+    color: gray;
+    margin-left: 16px;
+  }
+  .social{
+    margin-left: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+.fsocial li:first-child{
+  left: 0;
+  float: left;
+}
+.fsocial li{
+  list-style: none;
+  float: left;
+  margin: 8px;
+  margin-bottom: 16px;
+}
+.fsocial li a{
+  text-decoration: none;
+  
+}
+.contact-form{
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.textheader{
+  font-size: larger;
+  font-weight: bold;
+  letter-spacing: 3px;
+  padding-bottom: 25px;
+  color: #232525;
+  text-align: center;
+  text-transform: capitalize;
+}
+.rltext{
+  padding-top: 15px;
+  font-size: large;
+  color: #232525;
+  font-weight: 650;
+}
+.rltext a{
+  color: rgb(45, 45, 133);
+  text-transform: uppercase;
+}

@@ -1,0 +1,157 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'images/1.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>NU-Helper | {% block title %} {% endblock title %} </title>
+  </head>
+  <body>
+
+    <!-- navbar start -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'other:home' %}"><img src="{% static 'images/1.png' %}" alt="" width="170" height="80"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'other:home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'other:ref-books' %}">Reff Books</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'other:nu-questions' %}">Nu Questions</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link active" href="https://www.nu.ac.bd/recent-news-notice.php">Notice</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'other:programming-contest' %}">Programming Contest</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'other:product' %}">Our Products</a>
+              </li>
+             
+              {% if user.is_authenticated and user.is_superuser %}
+    <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'user:add-book' %}">Add Ref Books</a></li>
+            <li><a class="dropdown-item" href="{% url 'user:nu-question' %}">Add NU Question</a></li>
+            <li><a class="dropdown-item" href="{% url 'user:add-project' %}">Add Projects</a></li>
+            <li><a class="dropdown-item" href="{% url 'user:add-contest' %}">Add Programming Contest</a></li>
+            <li><a class="dropdown-item" href="{% url 'user:add-team' %}">Add Team Members</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'user:logout' %}">Log out</a></li>
+        </ul>
+    </li>
+{% elif user.is_authenticated %}
+    <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{user.username}}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">By Products</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'user:logout' %}">Log out</a></li>
+        </ul>
+    </li>
+{% else %}
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url 'user:login' %}">Login</a>
+    </li>
+{% endif %}
+
+            </ul>
+            <form method="GET" action="{% url 'other:search' %}">
+              <div class="input-group">
+                <input type="text" class="form-control" name="query" placeholder="eg. book & ques. name">
+                <button class="btn btn-primary" type="submit">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      <!-- End Nav Bar -->
+      
+      <div>
+        {% block content %}
+        
+        {% endblock content %}
+      </div>
+      <!-- Start Footer -->
+      <div class="" style="background-color: #212529;">
+        <div class="row">
+          <div class="col-sm-3">
+              <h3 class="p-3 texth3">About Us</h3>
+              <p class="mt-3 textp">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis nesciunt ab enim alias id officia hic maxime eligendi unde eum. Aliquid at aperiam atque fugit earum eligendi. Blanditiis, vitae et.</p>
+             
+          </div>
+          <div class="col-sm-5">
+            <div class="row">
+              <div class="col-sm-6">
+                <h3 class="p-3 texth3">Quick Links</h3>
+                <ul class="a">
+                  <li><a href="{% url 'other:home' %}">Home</a></li>
+                  <li><a href="{% url 'other:ref-books' %}">Reff Books</a></li>
+                  <li><a href="{% url 'other:nu-questions' %}">Nu Question</a></li>
+                  <li><a href="https://www.nu.ac.bd/recent-news-notice.php">Nu Notice</a></li>
+                </ul>
+              </div>
+              <div class="col-sm-6">
+                <h3 class="p-3 texth3">Quick Links</h3>
+                <ul class="a">
+                  <li><a href="{% url 'other:home' %}">Our Project</a></li>
+                  <li><a href="{% url 'other:home' %}">Programming Contest</a></li>
+                  <li><a href="{% url 'other:home' %}">Earning Opportunity</a></li>
+                  <li><a href="{% url 'other:home' %}">Contact</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <h3 class="p-3 texth3">Contact Us</h3>
+            <h4 style="font-size: larger; color: whitesmoke;">Address: <span style="font-size: medium; color: #1E74FF;">House/Flat # 45-47, Road # W-1 # Block # C, 1216</span></h4>
+            <h4 style="font-size: larger; color: whitesmoke;">Phone: <span style="font-size: medium; color: #1E74FF;">+8801444444452</span></h4>
+            <h4 style="font-size: larger; color: whitesmoke;">Email: <span style="font-size: medium; color: #1E74FF;">info@mail.com</span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- End Footer -->
+        
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

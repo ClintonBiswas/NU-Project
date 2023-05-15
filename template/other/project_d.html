@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+{% block title %} Project details {% endblock title%} 
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row py-5">
+            <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{project.image.url}}" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{project.title}}</h5>
+                      <p class="card-text">{{project.bio|linebreaks}}</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- <div class="col-sm-5">
+                <img class="mb-2 rounded" src="{{project.image.url}}" class="img-thumbnail" alt="..." style="overflow: hidden;">
+            </div>
+            <div class="col-sm-7">
+                <h4>Project Name: {{project.title}}</h4>
+                <h6>{{project.bio|linebreaks}}</h6>
+            </div> -->
+        </div>
+    </div>
+{% endblock content %}

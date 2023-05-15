@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block title %} Previous Question {% endblock title%} 
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="textheader mt-3">**Upcomming Programming Contest**</h1>
+    <div class="row">
+        
+        {% for contest in contests %}
+            <div class="col-sm-6">
+                <div class="card mb-3">
+                    
+                    <div class="card-body">
+                      <h5 class="card-title">{{contest.contest_name}}</h5>
+                      <h5 class="card-title">{{contest.organization_name}}</h5>
+                      <h5 class="card-title">Start: <span style="font-weight: 700; color: red; font-size: large;">{{contest.schedule}}</span></h5>
+                      <a href="{{contest.join_link}}" class="btn btn-primary">Join Contest</a>
+                    </div>
+                    {% endfor%}
+                  </div>
+            </div>
+{% endblock content %}
